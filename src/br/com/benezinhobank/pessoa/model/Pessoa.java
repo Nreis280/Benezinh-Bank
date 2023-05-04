@@ -41,4 +41,14 @@ public abstract class Pessoa {
     public void setPessoa(PessoaFisica pessoa) {
         this.pessoa = pessoa;
     }
+
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", nascimento=" + nascimento +
+                ", pessoa=" + pessoa +
+                '}';
+    }
 }

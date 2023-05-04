@@ -39,14 +39,14 @@ public class Agencia {
         this.banco = banco;
     }
 
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Agencia{");
-        sb.append("numero='").append(numero).append('\'');
-        sb.append(", nome='").append(nome).append('\'');
-        sb.append(", banco=").append(banco);
-        sb.append('}');
-        return sb.toString();
+        return "Agencia{" +
+                "numero='" + numero + '\'' +
+                ", nome='" + nome + '\'' +
+                ", banco=" + banco +
+                '}';
     }
 }
 
