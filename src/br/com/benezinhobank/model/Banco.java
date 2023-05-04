@@ -9,12 +9,13 @@ public class Banco {
     public Banco() {
     }
 
-    public Banco(String nome) {
-        this.nome = nome;
-    }
+
 
     public String getNome() {
         return nome;
+    }
+    public Banco(String nome) {
+        this.nome = nome;
     }
 
     public void setNome(String nome) {
