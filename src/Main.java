@@ -2,9 +2,11 @@ import br.com.benezinhobank.model.Agencia;
 import br.com.benezinhobank.model.Banco;
 import br.com.benezinhobank.model.ContaCorrente;
 import br.com.benezinhobank.model.ContaPoupanca;
+import br.com.benezinhobank.pessoa.model.Pessoa;
 import br.com.benezinhobank.pessoa.model.PessoaFisica;
 import br.com.benezinhobank.pessoa.model.PessoaJuridica;
 
+import javax.swing.*;
 import java.time.LocalDate;
 
 public class Main {
@@ -27,9 +29,18 @@ public class Main {
         PessoaFisica nicolas = new PessoaFisica();
         nicolas.setNome("Nicolas");
         nicolas.setCPF("49881462860");
-        nicolas.setNascimento(LocalDate.of(1980,1,26));
+        nicolas.setNascimento(LocalDate.of(2004,1,26));
         nicolas.setCPF("49881462860");
         nicolas.setMae(mae);
+
+        PessoaFisica lucca = new PessoaFisica();
+        lucca.setNome("Lucca Freitas");
+        lucca.setCPF("49881462860");
+        lucca.setNascimento(LocalDate.of(2004,8,19));
+        lucca.setCPF("12321312379");
+        lucca.setMae(mae);
+
+
 
         ContaCorrente cc = new ContaCorrente();
         cc.setAgencia(osasco);
@@ -54,13 +65,55 @@ public class Main {
         ccni.setNumero("3-7");
         ccni.setAgencia(osasco);
         ccni.setTitular(nimastup);
-        ccni.setSaldo(800_000_000.00);
-        ccni.setLimete(10_00_000.00);
+        ccni.setSaldo(1500.00);
+        ccni.setLimete(10000.00);
+
+        Pessoa[] socios = new Pessoa[3];
+        socios[0] = nicolas;
+        socios[1] = mae;
+        socios[2] = lucca;
+
+        nimastup.setSocios(socios);
+        //System.out.println(ccni);
+
+        for (int i=0; i<socios.length; i++){
+            System.out.println(socios[i]);
+
+        }
+
+        int continua = 0;
+        System.out.println("------------------------------------");
+        System.out.println("Saldo anterior: " + ccni.getSaldo());
+        System.out.println("Limite: " + ccni.getLimete() );
+        System.out.println("Disponivel: " + ccni.getSaldo() + ccni.getLimete());
+
+        do {
+
+            double valor = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor do saque: "));
+
+            boolean saquei = ccni.sacar(valor);
+
+            if (saquei){
+                System.out.println("Saue egetuado com sucesso!!");
+            } else {
+                System.out.println("Erro no saque!");
+            }
+
+            String texto = """
+                    Deseja realizar um novo saque?
+                    [1]Sim
+                    [0]Não
+                    
+                    """;
+
+            continua = Integer.parseInt(JOptionPane.showInputDialog(texto));
+        } while (continua == 1);
+
+        System.out.println("Saldo anterior " + ccni.getSaldo());
 
 
-        System.out.println(ccni);
-        System.out.println(cc);
 
+        System.out.println("Saldo atual " + ccni.getSaldo());
 
     }
 }
