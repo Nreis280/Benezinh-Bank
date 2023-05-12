@@ -6,14 +6,14 @@ public class PessoaFisica extends Pessoa {
 
    private String CPF;
 
-   PessoaFisica mae;
+   private PessoaFisica mae;
 
 
    public PessoaFisica() {
    }
 
-   public PessoaFisica(String nome, LocalDate nascimento, PessoaFisica pessoa, String CPF, PessoaFisica mae) {
-      super(nome, nascimento, pessoa);
+   public PessoaFisica(String nome, LocalDate nascimento, String CPF, PessoaFisica mae) {
+      super(nome, nascimento);
       this.CPF = CPF;
       this.mae = mae;
    }
@@ -40,11 +40,6 @@ public class PessoaFisica extends Pessoa {
       return "PessoaFisica{" +
               "CPF='" + CPF + '\'' +
               ", mae=" + mae +
-              ", pessoa=" +
               "} " + super.toString();
    }
 }
-
-
-
-

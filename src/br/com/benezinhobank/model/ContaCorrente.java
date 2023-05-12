@@ -2,47 +2,31 @@ package br.com.benezinhobank.model;
 
 import br.com.benezinhobank.pessoa.model.Pessoa;
 
-public class ContaCorrente extends Conta{
+public class ContaCorrente extends Conta {
 
-    private double limete;
-    private Agencia agencia;
+    private double limite;
 
     public ContaCorrente() {
     }
 
-    public ContaCorrente(String numero, Agencia agencia, Pessoa titular,
-                         double saldo, double limete, Agencia agencia1) {
+    public ContaCorrente(String numero, Agencia agencia, Pessoa titular, double saldo, double limite) {
         super(numero, agencia, titular, saldo);
-        this.limete = limete;
-        this.agencia = agencia1;
+        this.limite = limite;
     }
 
-    public double getLimete() {
-        return limete;
+    public double getLimite() {
+        return limite;
     }
 
-    public void setLimete(double limete) {
-        this.limete = limete;
-    }
-
-    @Override
-    public Agencia getAgencia() {
-        return agencia;
+    public void setLimite(double limite) {
+        this.limite = limite;
     }
 
     @Override
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
-    }
-
-    public boolean sacar(double valor){
-
-        double valorDisponivel = getSaldo() + getLimete();
-
-        if (valor<=0) return false;
-
-        if (getSaldo() < valor) return false;
-
+    public boolean sacar(double valor) {
+        double valorDisponivel = getSaldo() + getLimite();
+        if (valor <= 0) return false;
+        if (valorDisponivel < valor) return false;
         setSaldo(getSaldo() - valor);
         return true;
     }
@@ -51,8 +35,7 @@ public class ContaCorrente extends Conta{
     @Override
     public String toString() {
         return "ContaCorrente{" +
-                "limete=" + limete +
-                ", agencia=" + agencia +
+                "limite=" + limite +
                 "} " + super.toString();
     }
 }

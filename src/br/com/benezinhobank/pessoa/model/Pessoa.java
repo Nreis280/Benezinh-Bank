@@ -6,16 +6,14 @@ public abstract class Pessoa {
 
     private String nome;
 
-    LocalDate nascimento;
-    private  PessoaFisica pessoa;
+    private LocalDate nascimento;
 
     public Pessoa() {
     }
 
-    public Pessoa(String nome, LocalDate nascimento, PessoaFisica pessoa) {
+    public Pessoa(String nome, LocalDate nascimento) {
         this.nome = nome;
         this.nascimento = nascimento;
-        this.pessoa = pessoa;
     }
 
     public String getNome() {
@@ -34,21 +32,12 @@ public abstract class Pessoa {
         this.nascimento = nascimento;
     }
 
-    public PessoaFisica getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(PessoaFisica pessoa) {
-        this.pessoa = pessoa;
-    }
-
 
     @Override
     public String toString() {
         return "Pessoa{" +
                 "nome='" + nome + '\'' +
                 ", nascimento=" + nascimento +
-                ", pessoa=" + pessoa +
                 '}';
     }
 }

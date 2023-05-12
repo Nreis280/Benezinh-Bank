@@ -3,10 +3,15 @@ package br.com.benezinhobank.model;
 import br.com.benezinhobank.pessoa.model.Pessoa;
 
 public abstract class Conta {
+
      private String numero;
+
      private Agencia agencia;
+
      private Pessoa titular;
+
      private double saldo;
+
 
      public Conta() {
      }
@@ -18,13 +23,6 @@ public abstract class Conta {
           this.saldo = saldo;
      }
 
-     public String getNumero() {
-          return numero;
-     }
-
-     public void setNumero(String numero) {
-          this.numero = numero;
-     }
 
      public Agencia getAgencia() {
           return agencia;
@@ -50,7 +48,22 @@ public abstract class Conta {
           this.saldo = saldo;
      }
 
+     public String getNumero() {
+          return numero;
+     }
 
+     public Conta setNumero(String numero) {
+          this.numero = numero;
+          return this;
+     }
+
+
+     public boolean sacar(double valor) {
+          if (valor <= 0) return false;
+          if (this.saldo < valor) return false;
+          this.saldo = this.saldo - valor;
+          return true;
+     }
 
 
      @Override
